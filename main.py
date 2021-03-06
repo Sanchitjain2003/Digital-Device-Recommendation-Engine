@@ -141,6 +141,6 @@ output(JOB_OPTIONS.get(str(choices[1])), DEVICE_OPTIONS.get(str(choices[0])))
 
 
 
-print("End!")
+print("Ended!")
 
 
