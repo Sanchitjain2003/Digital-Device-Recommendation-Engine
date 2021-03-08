@@ -127,22 +127,6 @@ def end_msg(seq): # Confirmation end message to handle errors.
             print("Thankyou for using. Exiting now!!")
             exit()
 
-"""def output(job, device):
-    if job == "Student" and device == "LAPTOP":
-        studentA = Student(job, device)
-        print("Hello school kid!")
-        print("{} has been selected.".format(studentA.studentType))
-"""
-# Input and choosing values
-"""choices = ask_input()
-device_obj = DeviceSelector(DEVICE_OPTIONS.get(str(choices[0])), JOB_OPTIONS.get(str(choices[1])))
-job = device_obj.success_msg()
-#output(JOB_OPTIONS.get(str(choices[1])), DEVICE_OPTIONS.get(str(choices[0])))
-"""
-
-
-print("Ended!")
-
 class Input():
     def __init__(self):
         self.deviceInput = int(input("What type of device do you want? \n Choose one from the following: \n 1. LAPTOP \n 2. ANDROID \
@@ -171,10 +155,11 @@ class Input():
         return professionInput
 
     def output (self):
-        print("{} has been queried & the user is a {}".format(self.device, self.profession))
+        return(str("{} has been queried & the user is a {}".format(self.device, self.profession)))
 
 obj = Input()
 job = obj.profession
 deviceinp = obj.device
 print(job)
 print(deviceinp)
+print(obj.profession)
