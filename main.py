@@ -127,20 +127,49 @@ def end_msg(seq): # Confirmation end message to handle errors.
             print("Thankyou for using. Exiting now!!")
             exit()
 
-def output(job, device):
+"""def output(job, device):
     if job == "Student" and device == "LAPTOP":
         studentA = Student(job, device)
         print("Hello school kid!")
         print("{} has been selected.".format(studentA.studentType))
-
+"""
 # Input and choosing values
-choices = ask_input()
+"""choices = ask_input()
 device_obj = DeviceSelector(DEVICE_OPTIONS.get(str(choices[0])), JOB_OPTIONS.get(str(choices[1])))
 job = device_obj.success_msg()
-output(JOB_OPTIONS.get(str(choices[1])), DEVICE_OPTIONS.get(str(choices[0])))
-
+#output(JOB_OPTIONS.get(str(choices[1])), DEVICE_OPTIONS.get(str(choices[0])))
+"""
 
 
 print("Ended!")
 
+class Input():
+    def __init__(self):
+        self.deviceInput = int(input("What type of device do you want? \n Choose one from the following: \n 1. LAPTOP \n 2. ANDROID \
+        \n 3. IOS \n Type numbers for selecting the option.\n"))
 
+        self.professionInput = int(input("What is your profession? \n Choose one from the following: \n 1. Student \n 2. Software Developer \n 3. Business Person \
+        \n 4. Data Scientist \n 5. Common person (Beginner knowledge of Tech) \nType number of option.\n"))
+        
+
+    def input_device (self, deviceInput, DEVICES):
+        if deviceInput > DEVICES or deviceInput <= 0:
+            print("Choice not found. You would have to retry.")
+            deviceInput = int(input("What type of device do you want? \n Choose one from the following: \n 1. LAPTOP \n 2. ANDROID \
+        \n 3. IOS \n Type numbers for selecting the option.\n"))
+            deviceInput = self.input_device(deviceInput, DEVICES)
+        return deviceInput
+
+    def input_profession (self, professionInput, JOBS):
+        if professionInput > JOBS or professionInput <= 0:
+            print("Choice not found. You would have to retry.")
+            professionInput = int(input("What is your profession? \n Choose one from the following: \n 1. Student \n 2. Software Developer \n 3. Business Person \
+        \n 4. Data Scientist \n 5. Common person (Beginner knowledge of Tech) \nType number of option.\n"))
+            professionInput = self.input_profession(professionInput, JOBS)
+        return professionInput
+
+    def output (self):
+        print("{} has been queried & the user is a {}".format(self.deviceInput, self.professionInput))
+
+obj = Input()
+obj.output()
