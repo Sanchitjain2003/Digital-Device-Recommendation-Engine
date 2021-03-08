@@ -147,10 +147,12 @@ class Input():
     def __init__(self):
         self.deviceInput = int(input("What type of device do you want? \n Choose one from the following: \n 1. LAPTOP \n 2. ANDROID \
         \n 3. IOS \n Type numbers for selecting the option.\n"))
-
+        self.deviceInput = self.input_device(self.deviceInput, DEVICES)
+        self.device = DEVICE_OPTIONS.get(str(self.deviceInput))
         self.professionInput = int(input("What is your profession? \n Choose one from the following: \n 1. Student \n 2. Software Developer \n 3. Business Person \
         \n 4. Data Scientist \n 5. Common person (Beginner knowledge of Tech) \nType number of option.\n"))
-        
+        self.professionInput = self.input_profession(self.professionInput, JOBS)
+        self.profession = JOB_OPTIONS.get(str(self.professionInput))
 
     def input_device (self, deviceInput, DEVICES):
         if deviceInput > DEVICES or deviceInput <= 0:
@@ -169,7 +171,10 @@ class Input():
         return professionInput
 
     def output (self):
-        print("{} has been queried & the user is a {}".format(self.deviceInput, self.professionInput))
+        print("{} has been queried & the user is a {}".format(self.device, self.profession))
 
 obj = Input()
-obj.output()
+job = obj.profession
+deviceinp = obj.device
+print(job)
+print(deviceinp)
