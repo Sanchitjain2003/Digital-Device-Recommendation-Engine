@@ -163,24 +163,24 @@ class Input():
         #self.seq = 3
         if profession == 'Student':
             #studentType = ""
-            self.professionSubType = int(input("What kind of school? \n Choose one from the following: \n 1. Primary/Pre-Primary (Pre-Nursery, Nursery, Kindergarten, Grade 1 & Grade 2) \
+            professionSubType = int(input("What kind of school? \n Choose one from the following: \n 1. Primary/Pre-Primary (Pre-Nursery, Nursery, Kindergarten, Grade 1 & Grade 2) \
              \n 2. Junior School (Grade 3 to Grade 5)\n 3. Middle School (Grade 6 to Grade 8) \
               \n 4. Junior High School (Grade 9 to Grade 10) \n 5. Senior High School (Grade 11 to Grade 12) \
               \n Choose a number from the given options.\n"))
-            if self.professionSubType > SCHOOLS or self.professionSubType <= 0:
+            if professionSubType > SCHOOLS or professionSubType <= 0:
                 print("Choice not found. You would have to retry.")
                 #print(self.professionSubType)
-                self.professionSubType = self.input_professionType(self.profession)
+                professionSubType = self.input_professionType(self.profession)
+                studentType = professionSubType
+                return studentType
                 #profession_SubType = self.professionSubType
-                self.studentType = SCHOOL_OPTIONS.get(str(self.professionSubType))
+                #studentType = SCHOOL_OPTIONS.get(str(professionSubType))
                 #self.studentType = studentType
-                print(self.studentType)
-                return self.studentType
+                #print(studentType)
             else:
-                print(self.professionSubType)
-                self.studentType = SCHOOL_OPTIONS.get(str(self.professionSubType))
-                #studentType = self.studentType
-                return self.studentType
+                studentType = SCHOOL_OPTIONS.get(str(professionSubType))
+                #print(studentType)
+                return studentType
 
 
 
@@ -190,8 +190,9 @@ class Input():
 obj = Input()
 job = obj.profession
 deviceinp = obj.device
+jobType = obj.professionSubType
 #type_of_student = obj.professionSubType
-jobType = obj.input_professionType(job)
+#jobType = obj.input_professionType(job)
 print(job)
 print(jobType)
 #print(type_of_student)
