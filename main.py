@@ -13,16 +13,6 @@ SCHOOLS = 5
 SOFTWARE_DEVELOPERS = 3
 
 # Main Device Selection class
-class DeviceSelector:
-    def __init__(self, deviceType, profession):
-        self.deviceType = deviceType
-        self.profession = profession
-    
-    def success_msg(self):
-        print("{} has been selected.".format(self.deviceType))
-        print("User is a {}".format(self.profession))
-        return self.profession
-
 class Input():
     def __init__(self):
         #self.seq = 0
@@ -86,9 +76,21 @@ class Input():
     def output (self):
         return(str("{} has been queried & the user is a {}".format(self.device, self.profession)))
 
-obj = Input()
+class DeviceSelector(Input):
+    def __init__(self):
+        Input.__init__(self)
+        self.deviceType = self.device
+        self.profession = self.profession
+        self.successMsg = self.success_msg()
+    
+    def success_msg(self):
+        return (("{} has been selected.\nUser is a {}.").format(self.deviceType, self.profession))
+
+obj = DeviceSelector()
 job = obj.profession
 deviceinp = obj.device
 jobType = obj.professionSubType
 print(job)
 print(jobType)
+print(obj.successMsg)
+print(obj.output())
