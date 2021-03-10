@@ -5,9 +5,12 @@ DEVICE_OPTIONS = {'1': 'LAPTOP', '2': 'ANDROID', '3': 'IOS'}
 JOB_OPTIONS = {'1': 'Student', '2': 'Software Developer', '3': 'Business Person', '4': 'Data Scientist','5': 'Common person (Beginner knowledge of Tech)'}
 SCHOOL_OPTIONS = {
     '1': 'Primary', '2': 'Junior School', '3': 'Middle School', '4': 'Junior High School', '5': 'Senior High School'}
+SDE_OPTIONS = {'1': 'SDE 1', '2' : 'SDE 2', '3': 'SDE 3'}
+BUSINESS_OPTIONS = {'1': 'Manufacturing', '2': 'Service', '3': 'Merchandising', '4': 'Hybrid'}
 DEVICES = 3
 JOBS = 5
 SCHOOLS = 5
+SOFTWARE_DEVELOPERS = 3
 
 # Main Device Selection class
 class DeviceSelector:
@@ -19,114 +22,6 @@ class DeviceSelector:
         print("{} has been selected.".format(self.deviceType))
         print("User is a {}".format(self.profession))
         return self.profession
-
-class Laptop(DeviceSelector):
-    def __init__(self,profession):
-        self.deviceType = 'LAPTOP'
-        self.profession = profession
-        DeviceSelector.__init__(self, self.deviceType, self.profession)
-
-class Android(DeviceSelector):
-    def __init__(self, profession):
-        self.deviceType = 'ANDROID'
-        self.profession = profession
-        DeviceSelector.__init__(self, self.deviceType, self.profession)
-
-class Ios(DeviceSelector):
-    def __init__(self, profession):
-        self.deviceType = 'IOS'
-        self.profession = profession
-        DeviceSelector.__init__(self, self.deviceType, self.profession)
-    
-class Student(Laptop, Android, Ios):
-    def __init__(self, studentType, deviceType):
-        self.studentType = SCHOOL_OPTIONS.get(str(int(input("What kind of school? \n Choose one from the following: \n 1. Primary/Pre-Primary (Pre-Nursery, Nursery, Kindergarten, Grade 1 & Grade 2) \
-             \n 2. Junior School (Grade 3 to Grade 5)\n 3. Middle School (Grade 6 to Grade 8) \
-              \n 4. Junior High School (Grade 9 to Grade 10) \n 5. Senior High School (Grade 11 to Grade 12) \
-              \n Choose a number from the given options."))))
-        self.deviceType = deviceType
-        if self.deviceType == "LAPTOP":
-            Laptop.__init__(self, 'Student')
-        elif self.deviceType == "ANDROID":
-            Android.__init__(self, 'Student')
-        elif self.deviceType == "IOS":
-            Ios.__init__(self, 'Student')
-    
-    def student_type(self):
-        return self.studentType
-
-class Primary(Student):
-    def __init__(self):
-        self.studentType = 'Primary'
-        Student.__init__(self, self.studentType, self.deviceType)
-
-class JuniorSchool(Student):
-    def __init__(self):
-        self.studentType = 'Junior School'
-        Student.__init__(self, self.studentType, self.deviceType)
-
-class MiddleSchool(Student):
-    def __init__(self):
-        self.studentType = 'Middle School'
-        Student.__init__(self, self.studentType, self.deviceType)
-
-class JuniorHigh(Student):
-    def __init__(self):
-        self.studentType = 'Junior High School'
-        Student.__init__(self, self.studentType, self.deviceType)
-
-class SeniorHigh(Student):
-    def __init__(self):
-        self.studentType = 'Senior High School'
-        Student.__init__(self, self.studentType, self.deviceType)
-        
-
-def device_input(): # Taking choice input for selecting device.
-    seq = 1
-    device_type = int(input("What type of device do you want? \n Choose one from the following: \n 1. LAPTOP \n 2. ANDROID \
-        \n 3. IOS \n Type numbers for selecting the option.\n"))
-
-    if device_type > DEVICES or device_type <= 0:
-        print("Choice not found. You would have to retry.")
-        device_type = end_msg(seq)
-        return device_type
-    else:
-        return device_type
-
-def profession_input():  # Taking choice input for selecting profession.
-    seq = 2
-    profession_choice = int(input("What is your profession? \n Choose one from the following: \n 1. Student \n 2. Software Developer \n 3. Business Person \
-        \n 4. Data Scientist \n 5. Common person (Beginner knowledge of Tech) \nType number of option.\n"))
-
-    if profession_choice > JOBS or profession_choice <= 0:
-        print("Choice not found. You would have to retry.") 
-        profession_choice = end_msg(seq)
-        return profession_choice
-    else:
-        return profession_choice
-
-def ask_input(): # Handling all the major inputs
-    device_type = device_input()
-    profession_choice = profession_input()
-
-    return device_type, profession_choice
-
-def end_msg(seq): # Confirmation end message to handle errors.
-    
-    if seq == 1:
-        end_validation = input("Press 'y' to retry & 'n' to exit.\n").lower()
-        if end_validation == 'y' or end_validation == 'yes':
-            return device_input()
-        elif end_validation == 'n' or end_validation == 'no':
-            print("Thankyou for using. Exiting now!!")
-            exit()
-    elif seq == 2:
-        end_validation = input("Press 'y' to retry & 'n' to exit.\n").lower()
-        if end_validation == 'y' or end_validation == 'yes':
-            return profession_input()
-        elif end_validation == 'n' or end_validation == 'no':
-            print("Thankyou for using. Exiting now!!")
-            exit()
 
 class Input():
     def __init__(self):
@@ -169,21 +64,25 @@ class Input():
               \n Choose a number from the given options.\n"))
             if professionSubType > SCHOOLS or professionSubType <= 0:
                 print("Choice not found. You would have to retry.")
-                #print(self.professionSubType)
                 professionSubType = self.input_professionType(self.profession)
                 studentType = professionSubType
                 return studentType
-                #profession_SubType = self.professionSubType
-                #studentType = SCHOOL_OPTIONS.get(str(professionSubType))
-                #self.studentType = studentType
-                #print(studentType)
             else:
                 studentType = SCHOOL_OPTIONS.get(str(professionSubType))
-                #print(studentType)
                 return studentType
-
-
-
+            
+        if profession == 'Software Developer':
+            professionSubType = int(input("Please mention the tier of of your Software Development. \n Choose one from the following: \n 1. Tier 1\
+                \n 2. Tier 2 \n 3. Tier 3 \n Write number to select option."))
+            if professionSubType > SOFTWARE_DEVELOPERS or professionSubType <= 0:
+                print("Choice not found. You would have to retry.")
+                professionSubType = self.input_professionType(self.profession)
+                SDEType = professionSubType
+                return SDEType
+            else:
+                SDEType = SDE_OPTIONS.get(str(professionSubType))
+                return SDEType
+    
     def output (self):
         return(str("{} has been queried & the user is a {}".format(self.device, self.profession)))
 
@@ -191,8 +90,5 @@ obj = Input()
 job = obj.profession
 deviceinp = obj.device
 jobType = obj.professionSubType
-#type_of_student = obj.professionSubType
-#jobType = obj.input_professionType(job)
 print(job)
 print(jobType)
-#print(type_of_student)
