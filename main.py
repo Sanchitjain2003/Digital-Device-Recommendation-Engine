@@ -87,29 +87,126 @@ class Input():
         return (("{} has been selected.\nUser is a {}.").format(self.deviceType, self.profession))
 """    
 class Student(Input):
+    Student_response = []
+
     def __init__(self, professionSubType, profession):
-        #Input.__init__(self)
-        self.studentType = professionSubType # Taking in profession sub type
-        #studentType = self.studentType
+        self.StudentType = professionSubType
 
-    def primary_quiz(self, studentType):
-        if studentType == 'Primary': # If the student studies in primary grade
-            print("{} has been selected.".format(self.studentType))
+    def mainStudent(self, StudentType):
+        if StudentType == 'Primary':
+            print("{} has been selected.".format(self.StudentType))
+            self.Student_response.append(self.primary_quiz('Student'))
 
-    def drivingStudent(self,studentType):
-        if studentType == 'Primary':
-            
+        elif StudentType == 'Junior School':
+            print("{} has been selected.".format(self.StudentType))
+            self.Student_response.append(self.juniorSchool_quiz('Junior School'))
+
+        elif StudentType == 'Middle School':
+            print("{} has been selected.".format(self.StudentType))
+            self.Student_response.append(self.middleSchool_quiz('Middle School'))
+        
+        elif StudentType == 'Junior High School':
+            print("{} has been selected.".format(self.StudentType))
+            self.Student_response.append(self.juniorHighSchool_quiz('Junior High School'))
+
+        elif StudentType == 'Senior High School':
+            print("{} has been selected.".format(self.StudentType))
+            self.Student_response.append(self.seniorHighSchool_quiz('Senior High School'))
+
+        return self.Student_response
+
+    def primary_quiz(self, StudentType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        primary_response = (ques1, ques2, ques3, ques4, ques5)
+        return primary_response
+
+    def juniorSchool_quiz(self, StudentType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        junior_response = (ques1, ques2, ques3, ques4, ques5)
+        return junior_response
+
+    def middleSchool_quiz(self, StudentType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        middle_response = (ques1, ques2, ques3, ques4, ques5)
+        return middle_response
+
+    def juniorHighSchool_quiz(self, StudentType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        juniorHigh_response = (ques1, ques2, ques3, ques4, ques5)
+        return juniorHigh_response
+
+    def seniorHighSchool_quiz(self, StudentType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        seniorHigh_response = (ques1, ques2, ques3, ques4, ques5)
+        return seniorHigh_response
 
 class SoftwareDevloper(Input):
+    SDE_response = []
+
     def __init__(self, professionSubType, profession):
         self.SDEType = professionSubType
 
-    def drivingSDE(self, SDEType):
+    def mainSDE(self, SDEType):
         if SDEType == 'SDE 1':
             print("{} has been selected.".format(self.SDEType))
-    
-    def SDE2_quiz(self, SDEType)
+            self.SDE_response.append(self.SDE1_quiz('SDE 1'))
 
+        elif SDEType == 'SDE 2':
+            print("{} has been selected.".format(self.SDEType))
+            self.SDE_response.append(self.SDE2_quiz('SDE 2'))
+
+        elif SDEType == 'SDE 3':
+            print("{} has been selected.".format(self.SDEType))
+            self.SDE_response.append(self.SDE2_quiz('SDE 2'))
+        
+        return self.SDE_response
+
+    def SDE1_quiz(self, SDEType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        SDE1_response = (ques1, ques2, ques3, ques4, ques5)
+        return SDE1_response
+
+    def SDE2_quiz(self, SDEType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        SDE2_response = (ques1, ques2, ques3, ques4, ques5)
+        return SDE2_response
+
+    def SDE3_quiz(self, SDEType):
+        ques1 = input("")
+        ques2 = input("")
+        ques3 = input("")
+        ques4 = input("")
+        ques5 = input("")
+        SDE3_response = (ques1, ques2, ques3, ques4, ques5)
+        return SDE3_response
 
 #obj = DeviceSelector() # Class for debugging
 obj = Input()
@@ -121,8 +218,10 @@ print(jobType)
 print(obj.output())
 if obj.profession == 'Student':
     studentA = Student(jobType, job)
-    studentA.primary_quiz(jobType)
+    print(studentA.mainStudent(jobType))
 
 elif obj.profession == 'Software Developer':
     softwareDevA = SoftwareDevloper(jobType, job) 
-    softwareDevA.SDE1_quiz(jobType)
+    print(softwareDevA.mainSDE(jobType))
+
+
