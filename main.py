@@ -76,7 +76,7 @@ class Input():
     def output (self):
         return(str("{} has been queried & the user is a {}".format(self.device, self.profession)))
 
-class DeviceSelector(Input):
+"""class DeviceSelector(Input):
     def __init__(self):
         Input.__init__(self)
         self.deviceType = self.device
@@ -85,12 +85,44 @@ class DeviceSelector(Input):
     
     def success_msg(self):
         return (("{} has been selected.\nUser is a {}.").format(self.deviceType, self.profession))
+"""    
+class Student(Input):
+    def __init__(self, professionSubType, profession):
+        #Input.__init__(self)
+        self.studentType = professionSubType # Taking in profession sub type
+        #studentType = self.studentType
 
-obj = DeviceSelector()
+    def primary_quiz(self, studentType):
+        if studentType == 'Primary': # If the student studies in primary grade
+            print("{} has been selected.".format(self.studentType))
+
+    def drivingStudent(self,studentType):
+        if studentType == 'Primary':
+            
+
+class SoftwareDevloper(Input):
+    def __init__(self, professionSubType, profession):
+        self.SDEType = professionSubType
+
+    def drivingSDE(self, SDEType):
+        if SDEType == 'SDE 1':
+            print("{} has been selected.".format(self.SDEType))
+    
+    def SDE2_quiz(self, SDEType)
+
+
+#obj = DeviceSelector() # Class for debugging
+obj = Input()
 job = obj.profession
 deviceinp = obj.device
 jobType = obj.professionSubType
 print(job)
 print(jobType)
-print(obj.successMsg)
 print(obj.output())
+if obj.profession == 'Student':
+    studentA = Student(jobType, job)
+    studentA.primary_quiz(jobType)
+
+elif obj.profession == 'Software Developer':
+    softwareDevA = SoftwareDevloper(jobType, job) 
+    softwareDevA.SDE1_quiz(jobType)
