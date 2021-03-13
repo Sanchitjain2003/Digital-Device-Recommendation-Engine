@@ -12,7 +12,7 @@ JOBS = 5
 SCHOOLS = 5
 SOFTWARE_DEVELOPERS = 3
 
-# Main Device Selection class
+# Main Input Handling class
 class Input():
     def __init__(self):
         #self.seq = 0
